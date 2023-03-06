@@ -6,6 +6,8 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
+import java.util.Arrays;
+
 public class Main {
     private static final EntityManagerFactory entityManagerFactory;
 
@@ -27,10 +29,17 @@ public class Main {
         EntityTransaction transaction = null;
         transaction = entityManager.getTransaction();
 
+        // Ajout coureur
         E_Coureur unAutreCoureur = new E_Coureur("Pouilly", "Océane");
 
+        // Ajout ligne pour la recherche
+        E_Coureur emp = entityManager.find(E_Coureur.class, 3);
+        if (emp!=null) {
+            System.out.println(emp);
+        }
+        /*
         try {
-            transaction.begin();
+          transaction.begin();
             entityManager.persist(unAutreCoureur);
             transaction.commit();
         } catch (Exception ex) {
@@ -43,5 +52,6 @@ public class Main {
         } finally {
             entityManager.close();
         }
+        */
     }
 }

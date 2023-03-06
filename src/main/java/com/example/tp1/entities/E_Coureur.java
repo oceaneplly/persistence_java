@@ -19,6 +19,12 @@ public class E_Coureur {
     private Date dateDeNaissance;
     private Object etatCoureur;
 
+    public E_Coureur() {
+    }
+    public E_Coureur(int id) {
+        this.id = id;
+    }
+
     public E_Coureur(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
@@ -173,5 +179,22 @@ public class E_Coureur {
         result = 31 * result + (dateDeNaissance != null ? dateDeNaissance.hashCode() : 0);
         result = 31 * result + (etatCoureur != null ? etatCoureur.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "E_Coureur{" +
+                "id=" + id +
+                ", mail='" + mail + '\'' +
+                ", motDePasse='" + motDePasse + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", tel='" + tel + '\'' +
+                ", numLicence='" + numLicence + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", sexe='" + sexe + '\'' +
+                ", dateDeNaissance=" + dateDeNaissance +
+                ", etatCoureur=" + etatCoureur +
+                '}';
     }
 }
