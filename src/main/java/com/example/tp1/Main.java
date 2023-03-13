@@ -39,15 +39,8 @@ public class Main {
         String str="2000-06-20";
         Date date=Date.valueOf(str);//converting string into sql date
         E_Coureur unCoureurEncore = new E_Coureur("tomdanion@gmail.fr","password","7 rue des Lilas Lomme","0789314569","1674","Danion","Tom","M", date,"hors_course");
-
-        // Ajout ligne pour la recherche
-        E_Coureur emp = entityManager.find(E_Coureur.class, 3);
-        if (emp!=null) {
-            System.out.println(emp);
-        }
-
         try {
-          transaction.begin();
+            transaction.begin();
             entityManager.persist(unCoureurEncore);
             transaction.commit();
         } catch (Exception ex) {
@@ -57,8 +50,34 @@ public class Main {
                 transaction.rollback();
             }
             throw ex;
-        } finally {
-            entityManager.close();
         }
+
+        // Modifications dans la BDD avec un id
+        E_Coureur X = entityManager.find(E_Coureur.class,1002);
+        if (X == null)
+        {
+            System.out.println("Le coureur X=1002 n'existe pas");
+        }
+        else {
+            transaction.begin();
+            X.setEtatCoureur("en_course");
+            X.setTel("067842135");
+            entityManager.persist(X);
+            transaction.commit();
+        }
+
+        // Suppression dans la BDD
+        E_Coureur coureurSupp = entityManager.find(E_Coureur.class,1003);
+        if (coureurSupp == null)
+        {
+            System.out.println("Le coureur X=1003 n'existe pas");
+        }
+        else {
+            transaction.begin();
+            entityManager.remove(coureurSupp);
+            transaction.commit();
+        }
+        entityManager.close();
+
     }
 }
