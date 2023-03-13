@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+    <persistence-unit name="default">
+        <class>com.example.tp1.entities.E_Categorie</class>
+        <class>com.example.tp1.entities.E_Categoriecourse</class>
+        <class>com.example.tp1.entities.E_Client</class>
+        <class>com.example.tp1.entities.E_Commentaire</class>
+        <class>com.example.tp1.entities.E_Competition</class>
+        <class>com.example.tp1.entities.E_Contact</class>
+        <class>com.example.tp1.entities.E_Coureur</class>
+        <class>com.example.tp1.entities.E_Course</class>
+        <class>com.example.tp1.entities.E_Equipement</class>
+        <class>com.example.tp1.entities.E_Inscription</class>
+        <class>com.example.tp1.entities.E_Passage</class>
+        <class>com.example.tp1.entities.E_Pointgeo</class>
+        <class>com.example.tp1.entities.E_Troncon</class>
+        <class>com.example.tp1.entities.E_Tronconcourse</class>
+        <class>com.example.tp1.entities.E_Utilise</class>
+        <class>com.example.tp1.entities.E_Dailyviewinscription</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/offroad"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="hibernate.connection.username" value="mmaes"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.connection.password" value="password"/>
+        </properties>
+    </persistence-unit>
+</persistence>
