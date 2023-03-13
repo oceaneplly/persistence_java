@@ -30,6 +30,19 @@ public class E_Coureur {
         this.prenom = prenom;
     }
 
+    public E_Coureur(String mail, String motDePasse, String adresse, String tel, String numLicence, String nom, String prenom, String sexe, Date dateDeNaissance, Object etatCoureur) {
+        this.mail = mail;
+        this.motDePasse = motDePasse;
+        this.adresse = adresse;
+        this.tel = tel;
+        this.numLicence = numLicence;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.sexe = sexe;
+        this.dateDeNaissance = dateDeNaissance;
+        this.etatCoureur = etatCoureur;
+    }
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
