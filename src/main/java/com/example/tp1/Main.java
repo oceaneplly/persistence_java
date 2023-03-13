@@ -1,6 +1,7 @@
 package com.example.tp1;
 //Import
 
+import com.example.tp1.Service.CoureurService;
 import com.example.tp1.entities.E_Coureur;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -10,6 +11,7 @@ import jakarta.persistence.Persistence;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
+import java.util.Random;
 
 public class Main {
     private static final EntityManagerFactory entityManagerFactory;
@@ -26,29 +28,29 @@ public class Main {
         return entityManagerFactory.createEntityManager();
     }
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
         final EntityManager entityManager = getEntityManager();
-        // Recherche d'un coureur
-        EntityTransaction transaction = null;
+
+        EntityTransaction transaction;
         transaction = entityManager.getTransaction();
 
-        // Ajout coureur short
-        E_Coureur unAutreCoureur = new E_Coureur("Pouilly", "Océane");
+        CoureurService coureurService = new CoureurService(entityManager);
 
-        // Ajout coureur long
-        String str="2000-06-20";
-        Date date=Date.valueOf(str);//converting string into sql date
-        E_Coureur unCoureurEncore = new E_Coureur("tomdanion@gmail.fr","password","7 rue des Lilas Lomme","0789314569","1674","Danion","Tom","M", date,"hors_course");
+        Random number = new Random();
+        int randomNumber = number.nextInt(((100 - 1) + 1) + 1);
+        E_Coureur coureur = coureurService.findCoureurById(randomNumber);
 
-        // Ajout ligne pour la recherche
-        E_Coureur emp = entityManager.find(E_Coureur.class, 3);
-        if (emp!=null) {
-            System.out.println(emp);
+        if (null != coureur) {
+            System.out.println(coureur);
+        } else {
+            System.out.println("Coureur not found");
         }
+
+        coureurService.deleteCoureur(randomNumber);
 
         try {
           transaction.begin();
-            entityManager.persist(unCoureurEncore);
+//            coureurService.createCoureur("tomdanion@gmail.fr","password","7 rue des Lilas Lomme","0789314569","1674","Danion","Tom","M", "2000-06-20","hors_course");
             transaction.commit();
         } catch (Exception ex) {
             ex.printStackTrace();
