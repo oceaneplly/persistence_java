@@ -3,14 +3,12 @@ package com.example.tp1;
 
 import com.example.tp1.Service.CoureurService;
 import com.example.tp1.entities.E_Coureur;
+import com.example.tp1.entities.E_Course;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.sql.Date;
 import java.util.Random;
 
 public class Main {
@@ -47,6 +45,11 @@ public class Main {
         }
 
         coureurService.deleteCoureur(randomNumber);
+
+        E_Course testCourse;
+        testCourse = entityManager.find(E_Course.class,1);
+//        testCourse.getCompetition();
+        System.out.println(testCourse.toString());
 
         try {
           transaction.begin();
