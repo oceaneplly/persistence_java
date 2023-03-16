@@ -3,18 +3,24 @@ package com.example.tp1.entities;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 @Entity
 @Table(name = "competition", schema = "bdd2i_test", catalog = "")
 public class E_Competition {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  @Id
     private int id;
     private String nom;
     private Timestamp dateDebut;
     private Timestamp dateFin;
     private String adressePc;
     private Integer idClient;
+
+    @OneToMany(targetEntity = E_Course.class, mappedBy = "competition")
+    private List<E_Course> courses = new ArrayList<>();
 
     public E_Competition() {};
     public E_Competition(int id, String nom, Timestamp dateDebut, Timestamp dateFin, String adressePc, Integer idClient) {
@@ -30,9 +36,6 @@ public class E_Competition {
         this.id = id;
     }
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -117,6 +120,14 @@ public class E_Competition {
         result = 31 * result + (adressePc != null ? adressePc.hashCode() : 0);
         result = 31 * result + (idClient != null ? idClient.hashCode() : 0);
         return result;
+    }
+
+    public List<E_Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<E_Course> courses) {
+        this.courses = courses;
     }
 
     @Override
