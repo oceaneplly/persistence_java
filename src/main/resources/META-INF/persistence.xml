@@ -21,11 +21,11 @@
         <class>com.example.tp1.entities.E_Utilise</class>
         <class>com.example.tp1.entities.E_Dailyviewinscription</class>
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/offroad"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/bdd2i_test"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="hibernate.connection.username" value="mmaes"/>
+            <property name="hibernate.connection.username" value="root"/>
             <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.connection.password" value="password"/>
+            <property name="hibernate.connection.password" value="STA62620"/>
         </properties>
     </persistence-unit>
 </persistence>

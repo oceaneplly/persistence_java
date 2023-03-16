@@ -4,11 +4,14 @@ import jakarta.persistence.*;
 
 import java.sql.Time;
 
-@Entity
-@Table(name = "course", schema = "bdd2i_test", catalog = "")
+@Entity @Table(name = "course", schema = "bdd2i_test", catalog = "")
 public class E_Course {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private Integer idCompetition;
+
+    @ManyToOne(optional = false) @JoinColumn(name = "idCompetition")
+    private E_Competition competition;
     private String nom;
     private Time heureDepart;
     private Time horaireMax;
@@ -18,25 +21,30 @@ public class E_Course {
     private Integer lieuArrivee;
     private Object nature;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id", nullable = false)
-    public int getId() {
-        return id;
+    public E_Course() {
     }
 
-    public void setId(int id) {
+    public E_Course(int id) {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "idCompetition", nullable = true)
-    public Integer getIdCompetition() {
-        return idCompetition;
+    public E_Course(int id, String nom, Time heureDepart, Time horaireMax, Double distance, Integer duree, Integer lieuDepart, Integer lieuArrivee, Object nature) {
+        this.id = id;
+        this.nom = nom;
+        this.heureDepart = heureDepart;
+        this.horaireMax = horaireMax;
+        this.distance = distance;
+        this.duree = duree;
+        this.lieuDepart = lieuDepart;
+        this.lieuArrivee = lieuArrivee;
+        this.nature = nature;
     }
 
-    public void setIdCompetition(Integer idCompetition) {
-        this.idCompetition = idCompetition;
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Basic
@@ -119,6 +127,15 @@ public class E_Course {
         this.nature = nature;
     }
 
+
+    public E_Competition getCompetition() {
+        return competition;
+    }
+
+    public void setCompetition(E_Competition competition) {
+        this.competition = competition;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -127,8 +144,8 @@ public class E_Course {
         E_Course eCourse = (E_Course) o;
 
         if (id != eCourse.id) return false;
-        if (idCompetition != null ? !idCompetition.equals(eCourse.idCompetition) : eCourse.idCompetition != null)
-            return false;
+     //   if (idCompetition != null ? !idCompetition.equals(eCourse.idCompetition) : eCourse.idCompetition != null)
+     //       return false;
         if (nom != null ? !nom.equals(eCourse.nom) : eCourse.nom != null) return false;
         if (heureDepart != null ? !heureDepart.equals(eCourse.heureDepart) : eCourse.heureDepart != null) return false;
         if (horaireMax != null ? !horaireMax.equals(eCourse.horaireMax) : eCourse.horaireMax != null) return false;
@@ -142,9 +159,25 @@ public class E_Course {
     }
 
     @Override
+    public String toString() {
+        return "E_Course{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", heureDepart=" + heureDepart +
+                ", horaireMax=" + horaireMax +
+                ", distance=" + distance +
+                ", duree=" + duree +
+                ", lieuDepart=" + lieuDepart +
+                ", lieuArrivee=" + lieuArrivee +
+                ", nature=" + nature +
+                ", competition =" + competition +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (idCompetition != null ? idCompetition.hashCode() : 0);
+ //       result = 31 * result + (idCompetition != null ? idCompetition.hashCode() : 0);
         result = 31 * result + (nom != null ? nom.hashCode() : 0);
         result = 31 * result + (heureDepart != null ? heureDepart.hashCode() : 0);
         result = 31 * result + (horaireMax != null ? horaireMax.hashCode() : 0);

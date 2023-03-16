@@ -3,6 +3,8 @@ package com.example.tp1.entities;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.Collection;
+import java.util.HashSet;
 
 @Entity
 @Table(name = "competition", schema = "bdd2i_test", catalog = "")
@@ -13,6 +15,20 @@ public class E_Competition {
     private Timestamp dateFin;
     private String adressePc;
     private Integer idClient;
+
+    public E_Competition() {};
+    public E_Competition(int id, String nom, Timestamp dateDebut, Timestamp dateFin, String adressePc, Integer idClient) {
+        this.id = id;
+        this.nom = nom;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.adressePc = adressePc;
+        this.idClient = idClient;
+    }
+
+    public E_Competition(int id) {
+        this.id = id;
+    }
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -101,5 +117,17 @@ public class E_Competition {
         result = 31 * result + (adressePc != null ? adressePc.hashCode() : 0);
         result = 31 * result + (idClient != null ? idClient.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "E_Competition{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", dateDebut=" + dateDebut +
+                ", dateFin=" + dateFin +
+                ", adressePc='" + adressePc + '\'' +
+                ", idClient=" + idClient +
+                '}';
     }
 }
