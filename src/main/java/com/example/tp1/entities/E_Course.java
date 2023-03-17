@@ -20,6 +20,7 @@ public class E_Course {
     private Integer lieuDepart;
     private Integer lieuArrivee;
     private Object nature;
+    private String etatCourse;
 
     public E_Course() {
     }
@@ -28,7 +29,7 @@ public class E_Course {
         this.id = id;
     }
 
-    public E_Course(int id, String nom, Time heureDepart, Time horaireMax, Double distance, Integer duree, Integer lieuDepart, Integer lieuArrivee, Object nature) {
+    public E_Course(int id, String nom, Time heureDepart, Time horaireMax, Double distance, Integer duree, Integer lieuDepart, Integer lieuArrivee, Object nature, String etatCourse) {
         this.id = id;
         this.nom = nom;
         this.heureDepart = heureDepart;
@@ -38,6 +39,7 @@ public class E_Course {
         this.lieuDepart = lieuDepart;
         this.lieuArrivee = lieuArrivee;
         this.nature = nature;
+        this.etatCourse = etatCourse;
     }
 
     public int getId() {
@@ -123,6 +125,7 @@ public class E_Course {
         return nature;
     }
 
+
     public void setNature(Object nature) {
         this.nature = nature;
     }
@@ -135,6 +138,18 @@ public class E_Course {
     public void setCompetition(E_Competition competition) {
         this.competition = competition;
     }
+
+    @Basic
+    @Column(name = "etatCourse", nullable = true)
+    public String getEtatCourse() {
+        return etatCourse;
+    }
+
+    public void setEtatCourse(String etatCourse) {
+        this.etatCourse = etatCourse;
+    }
+
+
 
     @Override
     public boolean equals(Object o) {

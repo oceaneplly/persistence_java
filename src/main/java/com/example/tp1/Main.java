@@ -25,19 +25,19 @@ public class Main {
 
             System.out.println("--------------- TP1 --------------------- \n");
 
-          //  E_Course course = entityManager.find(E_Course.class,1);
-          //  System.out.println(course);
+            //  E_Course course = entityManager.find(E_Course.class,1);
+            //  System.out.println(course);
 
-            E_Competition competition = entityManager.find(E_Competition.class,1);
+            E_Competition competition = entityManager.find(E_Competition.class, 1);
 
             // Affichage de la liste des courses
-             System.out.println(competition.getCourses());
+            System.out.println(competition.getCourses());
 
             // Affichage 1
             System.out.println("Avant modification");
             System.out.println(competition.toString());
 
-           // sleep(7000); // Le temps de faire la modification en BDD
+            // sleep(7000); // Le temps de faire la modification en BDD
             entityManager.refresh(competition); // rafraîchir les rôles
 
             // Affichage 2
@@ -46,15 +46,26 @@ public class Main {
 
             System.out.println("--------------------------------------------- \n");
             System.out.println("--------------- TP2 --------------------- \n");
-            System.out.println("Nombre de kilomètres : "+getDistanceComp(entityManager,1));
+            System.out.println("Question n°1 \n");
+            System.out.println("Nombre de kilomètres : " + getDistanceComp(entityManager, 1));
+            System.out.println("Question n°2 \n");
 
-
-            //     System.out.println(competition);
-        }  finally {
+            final String strQuery = "UPDATE E_Course e "
+                    + "SET e.etatCourse = 'Terminé' " + "WHERE e.etatCourse = :etatCourse";
+            Query query = entityManager.createQuery(strQuery);
+            query.setParameter("etatCourse", "En cours");
+            final EntityTransaction et = entityManager.getTransaction();
+            try {
+                et.begin();
+                query.executeUpdate();
+                et.commit();
+            } catch (Exception ex) {
+                et.rollback();
+            }
+        } finally {
             if (entityManager != null) entityManager.close();
             if (entityManagerFactory != null) entityManagerFactory.close();
         }
-
     }
 
     private static double getDistanceComp(EntityManager entityManager, int idComp) {
