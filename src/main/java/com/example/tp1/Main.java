@@ -1,7 +1,9 @@
 package com.example.tp1;
 //Import
 
+import com.example.tp1.Service.CoureurPerCategorieProvider;
 import com.example.tp1.Service.CoureurService;
+import com.example.tp1.entities.E_Categorie;
 import com.example.tp1.entities.E_Coureur;
 import com.example.tp1.entities.E_Course;
 import jakarta.persistence.EntityManager;
@@ -9,6 +11,8 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
+import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 
 public class Main {
@@ -34,6 +38,14 @@ public class Main {
 
         CoureurService coureurService = new CoureurService(entityManager);
 
+        // Compter le nombre de coureur dans une categorie
+        CoureurPerCategorieProvider coureurPerCategorieProvider = new CoureurPerCategorieProvider(entityManager);
+        E_Categorie categorie = entityManager.find(E_Categorie.class, 2);
+        long nbCoureurs = coureurPerCategorieProvider.getCoureursFromCategorie(categorie);
+        System.out.println(categorie);
+        System.out.println("Nombre de coureur de la catégorie : " + nbCoureurs);
+        System.out.println("\n----------------------------\n");
+
         Random number = new Random();
         int randomNumber = number.nextInt(((100 - 1) + 1) + 1);
         E_Coureur coureur = coureurService.findCoureurById(randomNumber);
@@ -46,10 +58,9 @@ public class Main {
 
         coureurService.deleteCoureur(randomNumber);
 
-        E_Course testCourse;
-        testCourse = entityManager.find(E_Course.class,1);
+        E_Course testCourse = entityManager.find(E_Course.class,1);
 //        testCourse.getCompetition();
-        System.out.println(testCourse.toString());
+        System.out.println("Course : " + testCourse.toString());
 
         try {
           transaction.begin();

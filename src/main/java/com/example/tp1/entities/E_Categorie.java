@@ -87,4 +87,15 @@ public class E_Categorie {
         result = 31 * result + (anneeMax != null ? anneeMax.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "E_Categorie{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", code='" + code + '\'' +
+                ", anneeMin=" + anneeMin +
+                ", anneeMax=" + anneeMax +
+                '}';
+    }
 }
