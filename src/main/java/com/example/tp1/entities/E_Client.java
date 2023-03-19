@@ -74,4 +74,14 @@ public class E_Client {
         result = 31 * result + (pays != null ? pays.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "E_Client{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", pays='" + pays + '\'' +
+                '}';
+    }
 }

@@ -50,4 +50,12 @@ public class E_Tronconcourse {
         result = 31 * result + idTroncon;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "E_Tronconcourse{" +
+                "idCourse=" + idCourse +
+                ", idTroncon=" + idTroncon +
+                '}';
+    }
 }

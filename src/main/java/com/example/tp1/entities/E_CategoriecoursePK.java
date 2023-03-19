@@ -52,4 +52,12 @@ public class E_CategoriecoursePK implements Serializable {
         result = 31 * result + idCategorie;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "E_CategoriecoursePK{" +
+                "idCourse=" + idCourse +
+                ", idCategorie=" + idCategorie +
+                '}';
+    }
 }

@@ -9,6 +9,8 @@ public class E_Commentaire {
     private Integer idInscription;
     private Integer idPg;
 
+    private String hashtag;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "idCommentaire", nullable = false)
@@ -40,6 +42,16 @@ public class E_Commentaire {
         this.idPg = idPg;
     }
 
+    @Basic
+    @Column(name = "hashtag", nullable = false)
+    public String getHashtag() {
+        return hashtag;
+    }
+
+    public void setHashtag(String hashtag) {
+        this.hashtag = hashtag;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,5 +73,14 @@ public class E_Commentaire {
         result = 31 * result + (idInscription != null ? idInscription.hashCode() : 0);
         result = 31 * result + (idPg != null ? idPg.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "E_Commentaire{" +
+                "idCommentaire=" + idCommentaire +
+                ", idInscription=" + idInscription +
+                ", idPg=" + idPg +
+                '}';
     }
 }

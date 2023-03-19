@@ -63,6 +63,17 @@ public class E_Categorie {
     }
 
     @Override
+    public String toString() {
+        return "E_Categorie{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", code='" + code + '\'' +
+                ", anneeMin=" + anneeMin +
+                ", anneeMax=" + anneeMax +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

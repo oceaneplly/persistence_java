@@ -143,4 +143,19 @@ public class E_Inscription {
         result = 31 * result + (noBracelet != null ? noBracelet.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "E_Inscription{" +
+                "id=" + id +
+                ", dateInscr=" + dateInscr +
+                ", validationPj=" + validationPj +
+                ", etatInscription=" + etatInscription +
+                ", idCoureur=" + idCoureur +
+                ", idCourse=" + idCourse +
+                ", codeCategorie=" + codeCategorie +
+                ", noDossard=" + noDossard +
+                ", noBracelet=" + noBracelet +
+                '}';
+    }
 }

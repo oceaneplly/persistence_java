@@ -119,4 +119,17 @@ public class E_Troncon {
         result = 31 * result + (tempsAlerte != null ? tempsAlerte.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "E_Troncon{" +
+                "id=" + id +
+                ", pointDepart=" + pointDepart +
+                ", pointArrivee=" + pointArrivee +
+                ", numeroCourse=" + numeroCourse +
+                ", tempsMax=" + tempsMax +
+                ", dateMax=" + dateMax +
+                ", tempsAlerte=" + tempsAlerte +
+                '}';
+    }
 }

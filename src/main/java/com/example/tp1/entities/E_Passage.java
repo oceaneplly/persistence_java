@@ -91,4 +91,15 @@ public class E_Passage {
         result = 31 * result + (idCourse != null ? idCourse.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "E_Passage{" +
+                "idPassage=" + idPassage +
+                ", dateHeurePassage=" + dateHeurePassage +
+                ", idEmplacement=" + idEmplacement +
+                ", idBracelet=" + idBracelet +
+                ", idCourse=" + idCourse +
+                '}';
+    }
 }

@@ -71,4 +71,14 @@ public class E_Utilise {
     public Long getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "E_Utilise{" +
+                "idPointGeo=" + idPointGeo +
+                ", idCourse=" + idCourse +
+                ", idEquipement=" + idEquipement +
+                ", id=" + id +
+                '}';
+    }
 }

@@ -100,4 +100,16 @@ public class E_Contact {
         result = 31 * result + (idClient != null ? idClient.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "E_Contact{" +
+                "id=" + id +
+                ", prenom='" + prenom + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", mail='" + mail + '\'' +
+                ", mission='" + mission + '\'' +
+                ", idClient=" + idClient +
+                '}';
+    }
 }

@@ -100,4 +100,16 @@ public class E_Pointgeo {
         result = 31 * result + (pays != null ? pays.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "E_Pointgeo{" +
+                "id=" + id +
+                ", longitude='" + longitude + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", commune='" + commune + '\'' +
+                ", region='" + region + '\'' +
+                ", pays='" + pays + '\'' +
+                '}';
+    }
 }

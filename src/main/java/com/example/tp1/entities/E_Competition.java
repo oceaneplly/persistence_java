@@ -141,4 +141,6 @@ public class E_Competition {
                 ", idClient=" + idClient +
                 '}';
     }
+
+
 }

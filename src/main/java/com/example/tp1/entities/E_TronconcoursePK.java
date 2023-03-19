@@ -52,4 +52,12 @@ public class E_TronconcoursePK implements Serializable {
         result = 31 * result + idTroncon;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "E_TronconcoursePK{" +
+                "idCourse=" + idCourse +
+                ", idTroncon=" + idTroncon +
+                '}';
+    }
 }

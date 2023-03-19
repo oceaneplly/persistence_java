@@ -75,4 +75,14 @@ public class E_Equipement {
         result = 31 * result + (estAffectee != null ? estAffectee.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "E_Equipement{" +
+                "id=" + id +
+                ", numeroSerie='" + numeroSerie + '\'' +
+                ", typeEquipement=" + typeEquipement +
+                ", estAffectee=" + estAffectee +
+                '}';
+    }
 }

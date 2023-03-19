@@ -50,4 +50,12 @@ public class E_Categoriecourse {
         result = 31 * result + idCategorie;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "E_Categoriecourse{" +
+                "idCourse=" + idCourse +
+                ", idCategorie=" + idCategorie +
+                '}';
+    }
 }
