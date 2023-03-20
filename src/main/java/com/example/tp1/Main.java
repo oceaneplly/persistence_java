@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static java.lang.Thread.getAllStackTraces;
@@ -98,8 +99,9 @@ public class Main {
                 "GROUP BY coureur.id\n" +
                 "ORDER BY coureur.id ASC";
         Query query = entityManager.createQuery(strQuery);
-        List<String> results = query.getResultList();
-        return results;
+        List<String> resultsString = Collections.singletonList(query.getResultList().toString());
+        System.out.println(resultsString);
+        return resultsString;
     }
 }
 

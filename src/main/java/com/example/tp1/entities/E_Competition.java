@@ -23,8 +23,7 @@ public class E_Competition {
     private List<E_Course> courses = new ArrayList<>();
 
     public E_Competition() {};
-    public E_Competition(int id, String nom, Timestamp dateDebut, Timestamp dateFin, String adressePc, Integer idClient) {
-        this.id = id;
+    public E_Competition(String nom, Timestamp dateDebut, Timestamp dateFin, String adressePc, Integer idClient) {
         this.nom = nom;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
